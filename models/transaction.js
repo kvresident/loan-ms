@@ -20,6 +20,10 @@ const transactionSchema = new mongoose.Schema({
   cost: {
     type: Number,
     default: 0
+  },
+  agent: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Agent'
   }
 }, {timestamps: true});
 

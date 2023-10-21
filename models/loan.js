@@ -36,8 +36,13 @@ const loanSchema = new mongoose.Schema({
     reason: {
         type: String,
         default: 'No comment'
-    }
-}, {timestamps: true});
+    },
+    terms: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'LoanTerm',
+        required: true,
+    },
+}, { timestamps: true });
 
 const Loan = mongoose.model('Loan', loanSchema);
 

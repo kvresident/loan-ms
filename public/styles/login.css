@@ -501,7 +501,7 @@ input:checked+.slider:before {
 		margin-bottom: 10px;
 	}
 	form .field-group {
-		padding: 0px 10px 0px 0;
+		padding: 0px;
 	}
 	.wthree-field button.btn {
 		font-size: 15px;
