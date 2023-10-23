@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const loanTermSchema = new mongoose.Schema({
-  name: {
+const loanTypeSchema = new mongoose.Schema({
+  title: {
     type: String,
     required: true,
   },
@@ -21,8 +21,8 @@ const loanTermSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-});
+}, {timestamps: true});
 
-const LoanTerm = mongoose.model('LoanTerm', loanTermSchema);
+const LoanType = mongoose.model('LoanType', loanTypeSchema);
 
-module.exports = LoanTerm;
+module.exports = LoanType;

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Guide</title>
+    <title>Loan Management System | Home</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -47,36 +47,52 @@
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="/" class="navbar-brand mx-4 mb-3" title="Back to Home">
-                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Loan Sys</h3>
+                <a href="/" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-users-gear me-2"></i>Loan Sys</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="/img/agent.png" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute start-0 top-0 p-1"></div>
+                        <img class="rounded-circle" src="/img/admin.png" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Help</h6>
-                        <span>Agent</span>
+                        <h6 class="mb-0">Super</h6>
+                        <span>Administrator</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/" class="nav-item nav-link">
-                        <i class="fas fa-home me-2"></i>
-                        <span>Home</span>
+                    <a href="/admin" class="nav-item nav-link">
+                        <i class="fa fa-tachometer-alt me-2"></i>
+                        <span>Dashboard</span>
                     </a>
-                    <a href="/login" class="nav-item nav-link">
-                        <i class="fa-solid fa-right-to-bracket me-2"></i>
-                        <span>Login</span>
+                    <a href="/admin/agents" class="nav-item nav-link active">
+                        <i class="fa-solid fa-users-gear me-2"></i>
+                        <span>Agents</span>
                     </a>
-                    <a href="/register" class="nav-item nav-link">
-                        <i class="fa-solid fa-user-plus me-2"></i>
-                        <span>Register</span>
+                    
+                    <a href="/admin/loans" class="nav-item nav-link">
+                        <i class="fa-solid fa-hand-holding-dollar me-2"></i>
+                        <span>Loans</span>
                     </a>
-                    <a href="/guide" class="nav-item nav-link active">
-                        <i class="fa-solid fa-circle-question me-2"></i>
-                        <span>Help</span>
+                    <a href="/admin/customers" class="nav-item nav-link">
+                        <i class="fa-solid fa-users me-2"></i>
+                        <span>Customers</span>
                     </a>
+                    <a href="/admin/transactions" class="nav-item nav-link">
+                        <i class="fa-solid fa-money-bill-transfer me-2"></i>
+                        <span>Transactions</span>
+                    </a>
+                    <a href="/admin/trends" class="nav-item nav-link">
+                        <i class="fa-solid fa-chart-simple me-2"></i>
+                        <span>Trends</span>
+                    </a>
+                    <a href="/admin/logs" class="nav-item nav-link">
+                        <i class="fa-solid fa-server me-2"></i>
+                        <span>Activities</span>
+                    </a>
+
                 </div>
             </nav>
         </div>
@@ -121,17 +137,76 @@
             <!-- Navbar End -->
 
 
-            <!-- Blank Start -->
+            <!-- Content Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <img src="/img/page-under-construction.svg" class="img-fluid" alt="">
-                        <h3 class="m-4">Page under construction</h3>
+                <div class="col-sm-12 col-xl-6 mb-4">
+                    <div class="bg-secondary rounded h-100 p-4">
+                       <form action="/loan/create-type" method="post" class="m-2">
+                        <h6 class="mb-4">Add new loan type</h6>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Loan Title" autocomplete="off" name="title" required>
+                            <label for="floatingInput">Loan Type title</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="tel" max="50000000" autocomplete="off" class="form-control" id="floatingPassword" placeholder="Minimum" name="minAmount" required>
+                            <label for="floatingPassword">Minimum Amount</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="floatingIdNo" placeholder="Maximum Amount" name="maxAmount" required>
+                            <label for="floatingIdNo">Maximum Amount</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingConstituency" placeholder="Duration" name="duration" required>
+                            <label for="floatingConstituency">Duration (months)</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingVillage" placeholder="Rate" name="rate" required>
+                            <label for="floatingVillage">Rate (1 - 100) %</label>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary m-2">ADD LOAN TYPE</button>
+                        </div>
+                       </form>
                     </div>
-    
+                </div>
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">LOAN TYPES</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Minimum</th>
+                                            <th scope="col">Maximum</th>
+                                            <th scope="col">Duration</th>
+                                            <th scope="col">Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% loanTypes.map(({title, minAmount, maxAmount, duration, rate})=>{ %>
+
+                                            <tr>
+                                                <td><%= title %></td>
+                                                <td><%= new Intl.NumberFormat('en-KE', { style: 'currency', currency: 'KES' }).format(minAmount) %></td>
+                                                <td><%= new Intl.NumberFormat('en-KE', { style: 'currency', currency: 'KES' }).format(maxAmount) %></td>
+                                                <td><%= duration %> Months</td>
+                                                <td><%= rate %>%</td>
+                                            </tr>
+
+                                       <% }) %>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
-            <!-- Blank End -->
+            <!-- Content End -->
 
 
             <!-- Footer Start -->

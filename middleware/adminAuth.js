@@ -16,7 +16,7 @@ function auth(req, res, next) {
         status: 401,
         reason: 'Access Denied',
         message: `Not cleared to be view this page`,
-        link: '/login/admin',
+        link: '/login',
         linkMessage: 'GO TO LOGIN'
     }
     const token = req.session.admin;

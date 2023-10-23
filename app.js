@@ -30,22 +30,25 @@ app.use(express.json());
 
 
 
-app.use('/agent', require('./routes/agents.js'))
+app.use('/agent', require('./routes/agents.js'));
+app.use('/admin', adminAuth, require('./routes/admin.js'));
+app.use('/loan', require('./routes/loan.js'))
+app.use('/customer', require('./routes/customer'));
 
-app.get('/', adminAuth, (req, res) => {
+app.get('/', (req, res) => {
     res.render('index');
 });
 
 app.use('/login', require('./routes/login.js') )
 
-app.get('/register', (req, res) => {
+app.get('/register',adminAuth, (req, res) => {
     res.render('register');
 })
 app.get('/guide', (req, res)=>{
     res.render('help');
 })
 let port = process.env.port;
-const uri = process.env.uri;
+const uri = process.env.offline_uri;
 
 mongoose.connect(uri, {
     useNewUrlParser: true,

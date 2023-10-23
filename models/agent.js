@@ -17,15 +17,21 @@ const agentSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true
   },
-  phoneNumber: {
+  phone: {
     type: String,
     required: true,
+    unique: true
   },
-  verification: {
-    type: String
-  }
-});
+  status: {
+    type: String,
+    enum: [
+      'pending', 'terminated', 'suspended', 'active'
+    ],
+    default: 'pending'
+  },
+}, { timestamps: true });
 
 const Agent = mongoose.model('Agent', agentSchema);
 

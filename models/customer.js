@@ -9,26 +9,34 @@ const customerSchema = new mongoose.Schema({
     type: Date, // You can store date of birth as a Date object
     required: true,
   },
-  location: {
-    constituency: {
-      type: String,
-      required: true,
-    },
-    village: {
-      type: String,
-      required: true,
-    },
+  constituency: {
+    type: String,
+    required: true,
+  },
+  village: {
+    type: String,
+    required: true,
   },
   nationalIdNumber: {
     type: String,
     required: true,
     unique: true, // Assuming national ID numbers are unique
   },
-  phoneNumber: {
+  phone: {
     type: String,
     required: true,
+    unique: true
   },
-});
+  gender: {
+    type: String,
+    enum: ['male', 'female'],
+    required: true
+  }, 
+  agent: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Agent'
+  }
+}, {timestamps:true});
 
 const Customer = mongoose.model('Customer', customerSchema);
 

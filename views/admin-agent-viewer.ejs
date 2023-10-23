@@ -45,144 +45,174 @@
         </div>
         <!-- Spinner End -->
 
-
-        <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-secondary navbar-dark">
-                <a href="/" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-users-gear me-2"></i>Loan Sys</h3>
-                </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="/img/agent.png" alt="" style="width: 40px; height: 40px;">
-                        <div
-                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
-                        </div>
-                    </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0"><%= name %></h6>
-                        <span>Agent</span>
-                    </div>
+<!-- Sidebar Start -->
+<div class="sidebar pe-4 pb-3">
+    <nav class="navbar bg-secondary navbar-dark">
+        <a href="/" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary"><i class="fa fa-users-gear me-2"></i>Loan Sys</h3>
+        </a>
+        <div class="d-flex align-items-center ms-4 mb-4">
+            <div class="position-relative">
+                <img class="rounded-circle" src="/img/admin.png" alt="" style="width: 40px; height: 40px;">
+                <div
+                    class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
                 </div>
-                <div class="navbar-nav w-100">
-                    <a href="/" class="nav-item nav-link active">
-                        <i class="fa fa-tachometer-alt me-2"></i>
-                        <span>Dashboard</span>
-                    </a>                    
-                    <a href="/agent/loans" class="nav-item nav-link">
-                        <i class="fa-solid fa-hand-holding-dollar me-2"></i>
-                        <span>Loans</span>
-                    </a>
-                    <a href="/agent/customers" class="nav-item nav-link">
-                        <i class="fa-solid fa-users me-2"></i>
-                        <span>Customers</span>
-                    </a>
-                    <a href="/agent/settings" class="nav-item nav-link">
-                        <i class="fa-solid fa-gear me-2"></i>
-                        <span>Settings</span>
-                    </a>
-
-                </div>
-            </nav>
+            </div>
+            <div class="ms-3">
+                <h6 class="mb-0">Super</h6>
+                <span>Administrator</span>
+            </div>
         </div>
-        <!-- Sidebar End -->
+        <div class="navbar-nav w-100">
+            <a href="/admin" class="nav-item nav-link">
+                <i class="fa fa-tachometer-alt me-2"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="/admin/agents" class="nav-item nav-link active">
+                <i class="fa-solid fa-users-gear me-2"></i>
+                <span>Agents</span>
+            </a>
+            
+            <a href="/admin/loans" class="nav-item nav-link">
+                <i class="fa-solid fa-hand-holding-dollar me-2"></i>
+                <span>Loans</span>
+            </a>
+            <a href="/admin/customers" class="nav-item nav-link">
+                <i class="fa-solid fa-users me-2"></i>
+                <span>Customers</span>
+            </a>
+            <a href="/admin/transactions" class="nav-item nav-link">
+                <i class="fa-solid fa-money-bill-transfer me-2"></i>
+                <span>Transactions</span>
+            </a>
+            <a href="/admin/trends" class="nav-item nav-link">
+                <i class="fa-solid fa-chart-simple me-2"></i>
+                <span>Trends</span>
+            </a>
+            <a href="/admin/logs" class="nav-item nav-link">
+                <i class="fa-solid fa-server me-2"></i>
+                <span>Activities</span>
+            </a>
+
+        </div>
+    </nav>
+</div>
+<!-- Sidebar End -->
 
 
-        <!-- Content Start -->
-        <div class="content">
-            <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="/" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa-solid fa-users-gear"></i></h2>
+<!-- Content Start -->
+<div class="content">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+        <a href="/" class="navbar-brand d-flex d-lg-none me-4">
+            <h2 class="text-primary mb-0"><i class="fa-solid fa-users-gear"></i></h2>
+        </a>
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+            <i class="fa fa-bars"></i>
+        </a>
+        <form class="d-none d-md-flex ms-4">
+            <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+        </form>
+        <div class="navbar-nav align-items-center ms-auto">
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <img class="rounded-circle me-lg-2" src="/img/admin.png" alt=""
+                        style="width: 40px; height: 40px;">
+                    <span class="d-none d-lg-inline-flex">Admin</span>
                 </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="/img/agent.png" alt=""
-                                style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><%= name %></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item"><i class="fa-solid fa-bell"></i>
-                                <span>Notifications</span></a>
-                            <a href="#" class="dropdown-item"><i class="fa-solid fa-chart-simple"></i>
-                                <span>Settings</span></a>
-                            <a href="#" class="dropdown-item"><i class="fa-solid fa-hand-holding-dollar"></i>
-                                <span>Loans</span> </a>
-                        </div>
-                    </div>
+                <div
+                    class="dropdown-menu dropdown-menu-end bg-secondary border border-primary border-top-0 rounded-0 rounded-bottom m-0">
+                    <a href="/admin/agents" class="dropdown-item">
+                        <i class="fa-solid fa-users-rectangle me-2"></i>
+                        <span>Agents</span></a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fa-solid fa-chart-simple me-2"></i>
+                        <span>Trends</span></a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fa-solid fa-hand-holding-dollar me-2"></i>
+                        <span>Loans</span> </a>
                 </div>
-            </nav>
-            <!-- Navbar End -->
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
 
 
             <!-- Client info Start -->
             <div class="wrapper">
-              <div class="profile-card js-profile-card">
-                <div class="profile-card__img">
-                  <img src="/img/agent.png" alt="profile card">
-                </div>
-            
-                <div class="profile-card__cnt js-profile-cnt">
-                  <div class="profile-card__name"><%= name %></div>
-                  <div class="profile-card__txt"><a href="/admin/agent/<%= username %>"><strong class="bg-secondary text-primary">@<%= username %></strong></a></div>
-                  <div class="profile-card__txt"><strong class="bg-secondary text-primary" style=""><%= status %></strong></div>
-                  <div class="profile-card__txt">Moderating <strong>agent</strong></div>
-                  <div class="profile-card-loc">
-                    <span class="profile-card-loc__icon">
-                      <i class="fa-solid fa-business-time"></i>
-                    </span>
-            
-                    <span class="profile-card-loc__txt">
-                      Since <%= createdAt %>
-                    </span>
-                  </div>
-            
-                  <div class="profile-card-inf">
-                    <div class="profile-card-inf__item">
-                      <div class="profile-card-inf__title">1598</div>
-                      <div class="profile-card-inf__txt">Revenue</div>
-                    </div>
-            
-                    <div class="profile-card-inf__item">
-                      <div class="profile-card-inf__title">65</div>
-                      <div class="profile-card-inf__txt">Customers</div>
-                    </div>
-            
-                    <div class="profile-card-inf__item">
-                      <div class="profile-card-inf__title">123</div>
-                      <div class="profile-card-inf__txt">Loans</div>
-                    </div>
-            
-                    <div class="profile-card-inf__item">
-                      <div class="profile-card-inf__title">185</div>
-                      <div class="profile-card-inf__txt">Transactions</div>
-                    </div>
-                  </div>
-            
-                  <div class="profile-card-social">
-                    <a href="mailto:<%= email %>" class="profile-card-social__item mail" target="_blank" title="Email Address">
-                      <span class="icon-font">
-                          <i class="fas fa-envelope"></i>
-                      </span>
-                    </a>
-            
-                    <a href="tel:<%= phone %>" class="profile-card-social__item phone" target="_blank" title="Phone Number">
-                      <span class="icon-font">
-                          <i class="fas fa-phone"></i>
-                      </span>
-                    </a>
-            
+                <div class="profile-card js-profile-card">
+                  <div class="profile-card__img">
+                    <img src="/img/agent.png" alt="profile card">
                   </div>
               
-                    <div class="profile-card-ctr">
-                      <button class="profile-card__button button--blue">Settings</button>
-                      <button class="profile-card__button button--orange">Logout</button>
+                  <div class="profile-card__cnt js-profile-cnt">
+                    <div class="profile-card__name"><%= name %></div>
+                    <div class="profile-card__txt"><a href="/admin/agent/<%= username %>"><strong class="bg-secondary text-primary">@<%= username %></strong></a></div>
+                    <div class="profile-card__txt"><strong class="bg-secondary text-primary" style=""><%= status %></strong></div>
+                    <div class="profile-card__txt">Moderating <strong>agent</strong></div>
+                    <div class="profile-card-loc">
+                      <span class="profile-card-loc__icon">
+                        <i class="fa-solid fa-business-time"></i>
+                      </span>
+              
+                      <span class="profile-card-loc__txt">
+                        Since <%= createdAt %>
+                      </span>
                     </div>
+              
+                    <div class="profile-card-inf">
+                      <div class="profile-card-inf__item">
+                        <div class="profile-card-inf__title">1598</div>
+                        <div class="profile-card-inf__txt">Revenue</div>
+                      </div>
+              
+                      <div class="profile-card-inf__item">
+                        <div class="profile-card-inf__title">65</div>
+                        <div class="profile-card-inf__txt">Customers</div>
+                      </div>
+              
+                      <div class="profile-card-inf__item">
+                        <div class="profile-card-inf__title">123</div>
+                        <div class="profile-card-inf__txt">Loans</div>
+                      </div>
+              
+                      <div class="profile-card-inf__item">
+                        <div class="profile-card-inf__title">185</div>
+                        <div class="profile-card-inf__txt">Transactions</div>
+                      </div>
+                    </div>
+              
+                    <div class="profile-card-social">
+                      <a href="mailto:<%= email %>" class="profile-card-social__item mail" target="_blank" title="Email Address">
+                        <span class="icon-font">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                      </a>
+              
+                      <a href="tel:<%= phone %>" class="profile-card-social__item phone" target="_blank" title="Phone Number">
+                        <span class="icon-font">
+                            <i class="fas fa-phone"></i>
+                        </span>
+                      </a>
+              
+                    </div>
+
+                    <div class="profile-card-ctr">
+                        <% if (status === 'suspended') { %>
+                        <button class="profile-card__button button--blue"><a href="/admin/set-status?id=<%= _id %>&status=pending" class="text-white">Lift Suspension</a></button>
+                        <button class="profile-card__button button--red"><a href="/admin/set-status?id=<%= _id %>&status=terminated" class="text-white">Terminate</a></button>
+                        <% } %>
+                        <% if (status === 'terminated') { %>
+                            <button class="profile-card__button button--green"><a href="/admin/set-status?id=<%= _id %>&status=pending" class="text-white">Reinstate</a></button>
+                        <% } %>
+                        <% if (status != 'terminated' && status != 'suspended') { %>
+                            <button class="profile-card__button button--orange"><a href="/admin/set-status?id=<%= _id %>&status=suspended" class="text-white">Suspend</a></button>
+                            <button class="profile-card__button button--red"><a href="/admin/set-status?id=<%= _id %>&status=terminated" class="text-white">Terminate</a></button>
+                        <% } %>
+
+                        
+                    </div>
+  
                   </div>
               
                   
@@ -549,6 +579,13 @@ a, a:hover {
 .profile-card__button.button--blue:hover {
   box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
 }
+.profile-card__button.button--green {
+  background: linear-gradient(45deg, #1df28b, #17ff27);
+  box-shadow: 0px 4px 30px rgba(19, 212, 32, 0.4);
+}
+.profile-card__button.button--green:hover {
+  box-shadow: 0px 7px 30px rgba(19, 212, 32, 0.75);
+}
 .profile-card__button.button--orange {
   background: linear-gradient(45deg, #d5135a, #f05924);
   box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
@@ -556,6 +593,15 @@ a, a:hover {
 .profile-card__button.button--orange:hover {
   box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
 }
+
+.profile-card__button.button--red {
+  background: linear-gradient(45deg, #d51313, #f03824);
+  box-shadow: 0px 4px 30px rgba(255, 0, 34, 0.35);
+}
+.profile-card__button.button--red:hover {
+  box-shadow: 0px 7px 30px rgba(255, 0, 34, 0.75);
+}
+
 .profile-card__button.button--gray {
   box-shadow: none;
   background: #dcdcdc;

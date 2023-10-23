@@ -9,7 +9,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles/login.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Login</title>
+    <title>Add Agent</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -21,7 +21,9 @@
     <div class="content-bg">
         <nav>
             <div class="company-logo">
-                <img src="logo-white.svg" alt="">
+                <a href="/" title="Home">
+                    <img src="logo-white.svg" alt="">
+                </a>
             </div>
             <div class="options">
                 <div class="links">
@@ -30,7 +32,7 @@
                             <a href="/login" class="">Login</a>
                         </li>
                         <li class="active">
-                            <a href="/register" class="">Register</a>
+                            <a href="/" class="">Home</a>
                         </li>
                         <li class="">
                             <a href="#" class="">Guide</a>
@@ -42,14 +44,22 @@
         <main>
             <div class="container">
                 <div class="company-logo">
-                    <img src="logo.svg" alt="">
+                    <a href="/" title="Home">
+                        <img src="logo.svg" alt="">
+                    </a>
                 </div>
-                <form action="#" method="post">
+                <form action="/agent/register" method="post">
                     <div class="field-group">
                         <span class="fa fa-user" aria-hidden="true"></span>
                         <div class="wthree-field">
                             <input name="name" id="nameInput" type="text" value="" placeholder="Full Name"
                                 required="">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <span class="fa fa-link" aria-hidden="true"></span>
+                        <div class="wthree-field">
+                            <input name="username" id="usernameInput" type="text" placeholder="Username">
                         </div>
                     </div>
                     <div class="field-group">
@@ -60,10 +70,9 @@
                         </div>
                     </div>
                     <div class="field-group">
-                        <span class="fa fa-user" aria-hidden="true"></span>
+                        <span class="fa fa-phone" aria-hidden="true"></span>
                         <div class="wthree-field">
-                            <input name="username" id="usernameInput" type="text" value="" placeholder="Username"
-                                required="">
+                            <input name="phone" id="phoneInput" type="tel" placeholder="Phone Number">
                         </div>
                     </div>
                     <div class="field-group">
@@ -72,14 +81,9 @@
                             <input name="password" id="passwordInput" type="password" placeholder="Password">
                         </div>
                     </div>
-                    <div class="field-group">
-                        <span class="fa fa-lock" aria-hidden="true"></span>
-                        <div class="wthree-field">
-                            <input name="confirmPassword" id="confirmPasswordInput" type="password" placeholder="Confirm Password">
-                        </div>
-                    </div>
+                    
                     <div class="wthree-field">
-                        <button type="submit" class="btn"><span>SEND REQUEST</span></button>
+                        <button type="submit" class="btn"><span>ADD AGENT</span></button>
                     </div>
                 </form>
             </div>

@@ -17,6 +17,16 @@ const loanSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    amountOffered: {
+        type: Number
+    },
+    amountExpectedBack: {
+        type: Number
+    },
+    amountPayed: {
+        type: Number,
+        default: 0
+    },
     isAccepted: {
         type: Boolean
     },
@@ -37,9 +47,9 @@ const loanSchema = new mongoose.Schema({
         type: String,
         default: 'No comment'
     },
-    terms: {
+    type: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'LoanTerm',
+        ref: 'LoanType',
         required: true,
     },
 }, { timestamps: true });
