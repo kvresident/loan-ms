@@ -3,6 +3,7 @@ const { create, setPwd, agentDashboard } = require('../controllers/agent');
 const adminAuth = require('../middleware/adminAuth');
 const { agentExistsAuth, activeAgentAuth } = require('../middleware/agentAuth');
 const { agentCustomersPage } = require('../controllers/customer');
+const { agentLoanContent } = require('../controllers/loan');
 
 const router = express.Router();
 
@@ -18,6 +19,11 @@ router.get('/set-pwd', (req, res)=>{
     res.render('setPwd', {username: agent})
 });
 
+router.get('/loans', activeAgentAuth, agentLoanContent)
+
+router.get('/settings', agentExistsAuth, (req, res)=>{
+    res.render('agent-settings', {name: req.session.agentData.name});
+})
 
 
 

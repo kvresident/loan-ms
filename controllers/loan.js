@@ -1,6 +1,8 @@
 const LoanType = require('../models/loanType');
 const Loan = require('../models/loan');
-const express = require('express')
+const express = require('express');
+const Customer = require('../models/customer');
+const moment = require('moment')
 
 /**
  * 
@@ -52,6 +54,54 @@ async function adminLoanContent(req, res){
     }
 }
 
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res 
+ */
+async function agentLoanContent(req, res){
+    try {
+        const loanTypes = await LoanType.find();
+        const customers = await Customer.find();
+        const loans = await Loan.find();
+        let agent = req.session.agentData;
+        res.render('agent-loan', {loanTypes, customers, loans, name: agent.name, moment})
+    } catch (error) {
+        console.log(error)
+        internalServerError(res);
+    }
+}
+
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res 
+ */
+async function createLoan(req, res){
+    try {
+       const customer = await Customer.findById(req.body.customer);
+       const loanType = await LoanType.findById(req.body.loanType);
+       let agent = req.session.agentData;
+        console.log(req.body)
+       const loan = new Loan({
+        customer: customer._id,
+        customerName: customer.name,
+        dateOfInitiation: new Date(),
+        amountRequested: req.body.amountRequested,
+        uploadedBy: agent._id,
+        type: loanType._id,
+        typeName: loanType.title,
+        deadline: req.body.deadline
+       })
+
+       await loan.save();
+
+       res.redirect('/agent/loans');
+    } catch (error) {
+        console.log(error)
+        internalServerError(res);
+    }
+}
 module.exports = {
-    createLoanType, adminLoanContent
+    createLoanType, adminLoanContent, agentLoanContent, createLoan
 }

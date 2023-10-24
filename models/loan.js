@@ -7,11 +7,13 @@ const loanSchema = new mongoose.Schema({
         required: true,
     },
     customerName: {
-        type: String
+        type: String,
+        required: true
     },
     dateOfInitiation: {
         type: Date,
         required: true,
+        default: Date.now
     },
     amountRequested: {
         type: Number,
@@ -30,13 +32,9 @@ const loanSchema = new mongoose.Schema({
     isAccepted: {
         type: Boolean
     },
-    dateRequiredToComplete: {
+    deadline: {
         type: Date,
         required: true,
-    },
-    transaction: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Transaction'
     },
     uploadedBy: {
         type: mongoose.Schema.Types.ObjectId,
@@ -52,6 +50,10 @@ const loanSchema = new mongoose.Schema({
         ref: 'LoanType',
         required: true,
     },
+    typeName: {
+        type: String,
+        required: true
+    }
 }, { timestamps: true });
 
 const Loan = mongoose.model('Loan', loanSchema);
