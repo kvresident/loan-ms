@@ -8,4 +8,6 @@ router.post('/create-type', createLoanType)
 
 router.post('/create', activeAgentAuth, createLoan);
 
+
+
 module.exports = router;

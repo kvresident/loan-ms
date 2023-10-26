@@ -14,8 +14,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
@@ -36,7 +37,8 @@
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -71,7 +73,7 @@
                         <i class="fa-solid fa-users-gear me-2"></i>
                         <span>Agents</span>
                     </a>
-                    
+
                     <a href="/admin/loans" class="nav-item nav-link active">
                         <i class="fa-solid fa-hand-holding-dollar me-2"></i>
                         <span>Loans</span>
@@ -109,13 +111,15 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                
+
                 <div class="navbar-nav align-items-center ms-auto">
-                                      
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="/img/agent.png" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><i class="fa-solid fa-circle-question me-2" title="Help"></i></span>
+                            <img class="rounded-circle me-lg-2" src="/img/agent.png" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><i class="fa-solid fa-circle-question me-2"
+                                    title="Help"></i></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="/" class="dropdown-item">
@@ -141,144 +145,80 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="col-sm-12 col-xl-6 mb-4">
                     <div class="bg-secondary rounded h-100 p-4">
-                       <form action="/loan/create-type" method="post" class="m-2">
-                        <h6 class="mb-4">Add new loan type</h6>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Loan Title" autocomplete="off" name="title" required>
-                            <label for="floatingInput">Loan Type title</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="tel" max="50000000" autocomplete="off" class="form-control" id="floatingPassword" placeholder="Minimum" name="minAmount" required>
-                            <label for="floatingPassword">Minimum Amount</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="floatingIdNo" placeholder="Maximum Amount" name="maxAmount" required>
-                            <label for="floatingIdNo">Maximum Amount</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingConstituency" placeholder="Duration" name="duration" required>
-                            <label for="floatingConstituency">Duration (months)</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingVillage" placeholder="Rate" name="rate" required>
-                            <label for="floatingVillage">Rate (1 - 100) %</label>
-                        </div>
-                        <div style="text-align: center;">
-                            <button type="submit" class="btn btn-primary m-2">ADD LOAN TYPE</button>
-                        </div>
-                       </form>
-                    </div>
-                </div>
-                <div class="row g-4 mb-2">
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">LOAN TYPES</h6>
-                            <div class="table-responsive">
+                        <form action="/admin/disburse" method="post" class="m-2">
+                            <h6 class="mb-4">Confirmation of loan disbursement</h6>
+                            <div class="owl-item">
+                                <div class="testimonial-item text-center">
+                                    <img src="<%= customer.gender == "female"? "/img/customer.png": "/img/customer-male.png" %>" style="height:100px" alt="profile card">
+                                    <h5 class="mb-1"><%= customer.name %></h5>
+                                    <p>From <%= customer.village %> - <%= customer.constituency %></p>
+                                    <p class="mb-0">Requested <%= new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES'}).format(loan.amountRequested) %></p>
+                                    <p>Of <%= loanType.title %> Loan</p>
+                                    <p><%= moment(loan.createdAt).fromNow() %></p>
+                                    <p><strong>Reason : </strong> <span><%= loan.reason %></span></p>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="loan" value="<%= loan._id %>" id="floatingSelec1" class="form-control bg-dark" placeholder="Loan Id">
+                                <label for="floatingSelec1">Loan Id</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="floatingIdNo" placeholder="Amount"
+                                    name="amountDisbursed" min="1000" max="1000000" required value="<%= loan.amountRequested %>">
+                                <label for="floatingIdNo">Amount To Give</label>
+                            </div>
+                            <div class="form-floating mb-3">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Range</th>
-                                            <th scope="col">Duration</th>
                                             <th scope="col">Rate</th>
-                                            <th scope="col"><i class="fa-solid fa-pen-nib"></i></th>
-
+                                            <th scope="col">Transaction Cost</th>
+                                            <th scope="col">To Send</th>
+                                            <th scope="col">Expected Back</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% loanTypes.map(({title, minAmount, maxAmount, duration, rate, _id})=>{ %>
-
-                                            <tr>
-                                                <td><%= title %></td>
-                                                <td>Ksh <%= minAmount/1000 %>k - <%= maxAmount/1000 %>k</td>
-                                                <td><%= duration %> Months</td>
-                                                <td><%= rate %>%</td>
-                                                <td>
-                                                    <a href="/loan/edit-type?id=<%= _id %>">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                       <% }) %>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">LOANS</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
                                         <tr>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Loan Type</th>
-                                            <th scope="col">Amount</th>
-                                            <th scope="col">Deadline</th>
-                                            <th scope="col">
-                                                <i class="fa-regular fa-pen-to-square"></i>
+                                            <th scope="row">
+                                                <span id="loanRate"><%= loanType.rate %></span>%
                                             </th>
-                                            <th>
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </th>
+                                            <td>
+                                                <span id="transactionCost">
+                                                    <%= new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES'}).format(loan.amountRequested/20) %>
+                                                </span>
+                                                <span> @5%</span>
+                                            </td>
+                                            <td>
+                                                <span id="amountToSend">
+                                                    <%= new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES'}).format(loan.amountRequested*0.95)  %>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span id="expectedBack">
+                                                    <%= new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES'}).format(loan.amountRequested * ((100+loanType.rate)/100))  %>
+                                                </span>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% loans.map(({customerName, typeName, amountRequested, deadline, isAccepted, _id})=>{ %>
-
-                                            <tr>
-                                                <td>
-                                                    <%= customerName %>
-                                                </td>
-                                                <td>
-                                                    <%= typeName %>
-                                                </td>
-                                                <td>Ksh. <%= amountRequested / 1000 %>k</td>
-                                                <td>
-                                                    <%= moment(deadline).fromNow() %>
-                                                </td>
-                                                
-                                                    <% if(isAccepted) {%>
-                                                        <td>
-                                                            <i class="fa-solid fa-ban"></i>
-                                                        </td>
-                                                            <td>
-                                                                <i class="fa-solid fa-ban"></i>
-                                                            </td>
-                                                            
-                                                    <% } else { %>
-                                                            <td>
-                                                                <a href="/admin/accept-loan?id=<%= _id %>" class="text-success" title="Accept Loan">
-                                                                    <i class="fa-regular fa-square-check"></i>
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <a href="/admin/delete-loan?id=<%= _id %>" class="text-danger">
-                                                                    <i title="Delete Loan" class="fa-solid fa-trash"></i>
-                                                                </a>
-                                                            </td>
-                                                            
-                                                    <% } %>
-                                                
-                                            </tr>
-
-                                            <% }) %>
                                     </tbody>
                                 </table>
                             </div>
-
-                        </div>
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="floatingConstituency" placeholder="Duration"
+                                    name="deadline" required value="<%= moment(loan.deadline).format("YYYY-MM-DD") %>">
+                                <label for="floatingConstituency">Deadline</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                                    style="height: 150px;" autocomplete="off" name="confirmation" required></textarea>
+                                <label for="floatingTextarea">Bank or Mpesa Confirmation message</label>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="submit" class="btn btn-primary m-2">DISBURSE</button>
+                            </div>
+                        </form>
                     </div>
-
                 </div>
-            </div>
+                
             <!-- Content End -->
 
 
@@ -287,7 +227,7 @@
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved.
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -317,6 +257,22 @@
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script src="/js/main.js"></script>
+    <script>
+        const rate = loanRate.innerText.split('%')[0];
+        floatingIdNo.addEventListener('input', ()=>{
+            const value = floatingIdNo.value;
+            if(value < 1000){
+                floatingIdNo.value = 1000;
+                return;
+            }else if (value > 1000000){
+                floatingIdNo.value = 1000000;
+                return;
+            }
+            transactionCost.innerText = new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES'}).format(value/20);
+            amountToSend.innerText = new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES'}).format(value*0.95)
+            expectedBack.innerText = new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES'}).format(value * (1+(rate/100)))
+        })
+    </script>
 </body>
 
 </html>

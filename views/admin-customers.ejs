@@ -72,11 +72,11 @@
                         <span>Agents</span>
                     </a>
                     
-                    <a href="/admin/loans" class="nav-item nav-link active">
+                    <a href="/admin/loans" class="nav-item nav-link">
                         <i class="fa-solid fa-hand-holding-dollar me-2"></i>
                         <span>Loans</span>
                     </a>
-                    <a href="/admin/customers" class="nav-item nav-link">
+                    <a href="/admin/customers" class="nav-item nav-link active">
                         <i class="fa-solid fa-users me-2"></i>
                         <span>Customers</span>
                     </a>
@@ -139,144 +139,42 @@
 
             <!-- Content Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="col-sm-12 col-xl-6 mb-4">
+                <div class="row g-4">
                     <div class="bg-secondary rounded h-100 p-4">
-                       <form action="/loan/create-type" method="post" class="m-2">
-                        <h6 class="mb-4">Add new loan type</h6>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Loan Title" autocomplete="off" name="title" required>
-                            <label for="floatingInput">Loan Type title</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="tel" max="50000000" autocomplete="off" class="form-control" id="floatingPassword" placeholder="Minimum" name="minAmount" required>
-                            <label for="floatingPassword">Minimum Amount</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="floatingIdNo" placeholder="Maximum Amount" name="maxAmount" required>
-                            <label for="floatingIdNo">Maximum Amount</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingConstituency" placeholder="Duration" name="duration" required>
-                            <label for="floatingConstituency">Duration (months)</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingVillage" placeholder="Rate" name="rate" required>
-                            <label for="floatingVillage">Rate (1 - 100) %</label>
-                        </div>
-                        <div style="text-align: center;">
-                            <button type="submit" class="btn btn-primary m-2">ADD LOAN TYPE</button>
-                        </div>
-                       </form>
-                    </div>
-                </div>
-                <div class="row g-4 mb-2">
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">LOAN TYPES</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Range</th>
-                                            <th scope="col">Duration</th>
-                                            <th scope="col">Rate</th>
-                                            <th scope="col"><i class="fa-solid fa-pen-nib"></i></th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% loanTypes.map(({title, minAmount, maxAmount, duration, rate, _id})=>{ %>
-
-                                            <tr>
-                                                <td><%= title %></td>
-                                                <td>Ksh <%= minAmount/1000 %>k - <%= maxAmount/1000 %>k</td>
-                                                <td><%= duration %> Months</td>
-                                                <td><%= rate %>%</td>
-                                                <td>
-                                                    <a href="/loan/edit-type?id=<%= _id %>">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                       <% }) %>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Your customers</h6>
                             
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% customers.forEach(({name, nationalIdNumber, phone, index, _id}) => { %>
+                                        <tr>
+                                            <th scope="row"><%= index %></th>
+                                            <td><%= name %></td>
+                                            <td><%= nationalIdNumber %></td>
+                                            <td><%= phone %></td>
+                                            <td>
+                                                <button type="button" class="btn btn-info m-2">
+                                                    <a href="/admin/customer-info?id=<%= _id %>" class="text-white">Info</a>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     
-                </div>
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">LOANS</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Loan Type</th>
-                                            <th scope="col">Amount</th>
-                                            <th scope="col">Deadline</th>
-                                            <th scope="col">
-                                                <i class="fa-regular fa-pen-to-square"></i>
-                                            </th>
-                                            <th>
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% loans.map(({customerName, typeName, amountRequested, deadline, isAccepted, _id})=>{ %>
-
-                                            <tr>
-                                                <td>
-                                                    <%= customerName %>
-                                                </td>
-                                                <td>
-                                                    <%= typeName %>
-                                                </td>
-                                                <td>Ksh. <%= amountRequested / 1000 %>k</td>
-                                                <td>
-                                                    <%= moment(deadline).fromNow() %>
-                                                </td>
-                                                
-                                                    <% if(isAccepted) {%>
-                                                        <td>
-                                                            <i class="fa-solid fa-ban"></i>
-                                                        </td>
-                                                            <td>
-                                                                <i class="fa-solid fa-ban"></i>
-                                                            </td>
-                                                            
-                                                    <% } else { %>
-                                                            <td>
-                                                                <a href="/admin/accept-loan?id=<%= _id %>" class="text-success" title="Accept Loan">
-                                                                    <i class="fa-regular fa-square-check"></i>
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <a href="/admin/delete-loan?id=<%= _id %>" class="text-danger">
-                                                                    <i title="Delete Loan" class="fa-solid fa-trash"></i>
-                                                                </a>
-                                                            </td>
-                                                            
-                                                    <% } %>
-                                                
-                                            </tr>
-
-                                            <% }) %>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
             </div>
             <!-- Content End -->

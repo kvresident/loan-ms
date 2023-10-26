@@ -48,7 +48,7 @@ app.get('/guide', (req, res)=>{
     res.render('help');
 })
 let port = process.env.port;
-const uri = process.env.offline_uri;
+const uri = process.env.uri;
 
 mongoose.connect(uri, {
     useNewUrlParser: true,

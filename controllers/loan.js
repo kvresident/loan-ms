@@ -47,7 +47,7 @@ async function adminLoanContent(req, res){
         const loanTypes = await LoanType.find();
 
         res.render('admin-loan', {
-            loans, loanTypes
+            loans, loanTypes, moment
         })
     } catch (error) {
         internalServerError(req);
@@ -61,10 +61,11 @@ async function adminLoanContent(req, res){
  */
 async function agentLoanContent(req, res){
     try {
+        let agent = req.session.agentData;
         const loanTypes = await LoanType.find();
         const customers = await Customer.find();
-        const loans = await Loan.find();
-        let agent = req.session.agentData;
+        const loans = await Loan.find({uploadedBy: agent._id});
+        
         res.render('agent-loan', {loanTypes, customers, loans, name: agent.name, moment})
     } catch (error) {
         console.log(error)
@@ -91,7 +92,8 @@ async function createLoan(req, res){
         uploadedBy: agent._id,
         type: loanType._id,
         typeName: loanType.title,
-        deadline: req.body.deadline
+        deadline: req.body.deadline,
+        reason: req.body.reason
        })
 
        await loan.save();
@@ -102,6 +104,42 @@ async function createLoan(req, res){
         internalServerError(res);
     }
 }
+
+
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res 
+ */
+async function agentDeleteLoan(req, res){
+    try {
+        const agent = req.session.agentData;
+
+        await Loan.findOneAndDelete({_id:req.query.id, uploadedBy: agent._id});
+
+        res.redirect('/agent/loans')
+    } catch (error) {
+        console.log(error);
+        internalServerError(res);
+    }
+}
+
+
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res 
+ */
+async function adminDeleteLoan(req, res){
+    try {
+        await Loan.findByIdAndDelete(req.query.id);
+        res.redirect('/admin/loans')
+    } catch (error) {
+        console.log(error);
+        internalServerError(res);
+    }
+}
+
 module.exports = {
-    createLoanType, adminLoanContent, agentLoanContent, createLoan
+    createLoanType, adminLoanContent, agentLoanContent, createLoan, agentDeleteLoan, adminDeleteLoan
 }

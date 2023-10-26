@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
   type: {
-    type: String, // 'Expense', 'Income', or other transaction types
+    type: String, 
     required: true,
   },
   amount: {
@@ -10,13 +10,6 @@ const transactionSchema = new mongoose.Schema({
     required: true,
   },
   description: String,
-  date: {
-    type: Date,
-    required: true,
-  },
-  message: {
-    type: String
-  },
   cost: {
     type: Number,
     default: 0
@@ -24,6 +17,9 @@ const transactionSchema = new mongoose.Schema({
   agent: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Agent'
+  },
+  confirmation:{
+    type: String
   }
 }, {timestamps: true});
 

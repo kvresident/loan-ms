@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Loan Management System | Home</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="/" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-users-gear me-2"></i>Loan Sys</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="/img/admin.png" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">Super</h6>
+                        <span>Administrator</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="/admin" class="nav-item nav-link">
+                        <i class="fa fa-tachometer-alt me-2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="/admin/agents" class="nav-item nav-link">
+                        <i class="fa-solid fa-users-gear me-2"></i>
+                        <span>Agents</span>
+                    </a>
+                    
+                    <a href="/admin/loans" class="nav-item nav-link">
+                        <i class="fa-solid fa-hand-holding-dollar me-2"></i>
+                        <span>Loans</span>
+                    </a>
+                    <a href="/admin/customers" class="nav-item nav-link active">
+                        <i class="fa-solid fa-users me-2"></i>
+                        <span>Customers</span>
+                    </a>
+                    <a href="/admin/transactions" class="nav-item nav-link">
+                        <i class="fa-solid fa-money-bill-transfer me-2"></i>
+                        <span>Transactions</span>
+                    </a>
+                    <a href="/admin/trends" class="nav-item nav-link">
+                        <i class="fa-solid fa-chart-simple me-2"></i>
+                        <span>Trends</span>
+                    </a>
+                    <a href="/admin/logs" class="nav-item nav-link">
+                        <i class="fa-solid fa-server me-2"></i>
+                        <span>Activities</span>
+                    </a>
+
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="/" class="navbar-brand d-flex d-lg-none me-4" title="home">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                
+                <div class="navbar-nav align-items-center ms-auto">
+                                      
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="/img/agent.png" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><i class="fa-solid fa-circle-question me-2" title="Help"></i></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="/" class="dropdown-item">
+                                <i class="fas fa-home me-2"></i>
+                                <span>Home</span>
+                            </a>
+                            <a href="/login" class="dropdown-item">
+                                <i class="fa-solid fa-right-to-bracket me-2"></i>
+                                <span>Login</span>
+                            </a>
+                            <a href="/register" class="dropdown-item">
+                                <i class="fa-solid fa-user-plus me-2"></i>
+                                <span>Register</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+             <!-- Client info Start -->
+             <div class="wrapper">
+                <div class="profile-card js-profile-card">
+                  <div class="profile-card__img">
+                    <img src="<%= customer.gender == "female"? "/img/customer.png": "/img/customer-male.png" %>" alt="profile card">
+                  </div>
+              
+                  <div class="profile-card__cnt js-profile-cnt">
+                    <div class="profile-card__name"><%= customer.name %></div>
+                    <div class="profile-card__txt">From <strong class="bg-secondary text-primary" style=""><%= customer.village %></strong>, <strong class="bg-secondary text-primary" style=""><%= customer.constituency %></strong></div>
+                    <div class="profile-card__txt">ID No. <strong><%= customer.nationalIdNumber %></strong></div>
+                    <div class="profile-card-loc">
+                      <span class="profile-card-loc__icon">
+                        <i class="fa-solid fa-business-time"></i>
+                      </span>
+              
+                      <span class="profile-card-loc__txt">
+                        Registered <%= moment(customer.createdAt).fromNow() %>
+                      </span>
+                    </div>
+              
+                    <div class="profile-card-inf">
+                      <div class="profile-card-inf__item">
+                        <div class="profile-card-inf__title">0</div>
+                        <div class="profile-card-inf__txt">Revenue</div>
+                      </div>
+              
+                      <div class="profile-card-inf__item">
+                        <div class="profile-card-inf__title"><%= loans.length %></div>
+                        <div class="profile-card-inf__txt">Loans</div>
+                      </div>
+              
+                      <div class="profile-card-inf__item">
+                        <div class="profile-card-inf__title">0</div>
+                        <div class="profile-card-inf__txt">Transactions</div>
+                      </div>
+                    </div>
+              
+                    <div class="profile-card-social">
+              
+                      <a href="tel:<%= customer.phone %>" class="profile-card-social__item phone" target="_blank" title="Phone Number">
+                        <span class="icon-font">
+                            <i class="fas fa-phone"></i>
+                        </span>
+                      </a>
+              
+                    </div>
+                
+                      <div class="profile-card-ctr">
+                        <button class="profile-card__button button--blue">Settings</button>
+                        <button class="profile-card__button button--orange">Logout</button>
+                      </div>
+                    </div>
+                
+                    
+                  </div>
+                
+                </div>
+
+                <div class="container-fluid pt-4 px-4">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="bg-secondary rounded h-100 p-4">
+                                <h6 class="mb-4"><%= customer.name %>'s Loans</h6>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Loan Type</th>
+                                                <th scope="col">Amount</th>
+                                                <th scope="col">Requested</th>
+                                                <th scope="col">Deadline</th>
+                                                <th scope="col">
+                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                </th>
+                                                <th>
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% loans.map(({customerName, typeName, amountRequested, deadline, isAccepted, _id, createdAt})=>{ %>
+    
+                                                <tr>
+                                                    <td>
+                                                        <%= typeName %>
+                                                    </td>
+                                                    <td>Ksh. <%= amountRequested / 1000 %>k</td>
+                                                    <td>
+                                                        <%= moment(createdAt).fromNow() %>
+                                                    </td>
+                                                    <td>
+                                                        <%= moment(deadline).fromNow() %>
+                                                    </td>
+                                                    
+                                                        <% if(isAccepted) {%>
+                                                            <td>
+                                                                <i class="fa-solid fa-ban"></i>
+                                                            </td>
+                                                                <td>
+                                                                    <i class="fa-solid fa-ban"></i>
+                                                                </td>
+                                                                
+                                                        <% } else { %>
+                                                                <td>
+                                                                    <a href="/admin/accept-loan?id=<%= _id %>" class="text-success" title="Accept Loan">
+                                                                        <i class="fa-regular fa-square-check"></i>
+                                                                    </a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="/admin/delete-loan?id=<%= _id %>" class="text-danger">
+                                                                        <i title="Delete Loan" class="fa-solid fa-trash"></i>
+                                                                    </a>
+                                                                </td>
+                                                                
+                                                        <% } %>
+                                                    
+                                                </tr>
+    
+                                                <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+                
+                
+              <!-- Client info End -->
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/chart/chart.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="/js/main.js"></script>
+    <!-- Template Javascript -->
+    <script>
+        (function ($) {
+            "use strict";
+
+            // Spinner
+            var spinner = function () {
+                setTimeout(function () {
+                    if ($('#spinner').length > 0) {
+                        $('#spinner').removeClass('show');
+                    }
+                }, 1);
+            };
+            spinner();
+
+
+            // Back to top button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 300) {
+                    $('.back-to-top').fadeIn('slow');
+                } else {
+                    $('.back-to-top').fadeOut('slow');
+                }
+            });
+            $('.back-to-top').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
+                return false;
+            });
+
+
+            // Sidebar Toggler
+            $('.sidebar-toggler').click(function () {
+                $('.sidebar, .content').toggleClass("open");
+                return false;
+            });
+
+
+            // Progress Bar
+            $('.pg-bar').waypoint(function () {
+                $('.progress .progress-bar').each(function () {
+                    $(this).css("width", $(this).attr("aria-valuenow") + '%');
+                });
+            }, { offset: '80%' });
+
+
+           
+
+        })(jQuery);
+
+
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,700&subset=latin-ext");
+html {
+  position: relative;
+  overflow-x: hidden !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  color: #eeeeee;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.wrapper {
+  width: 100%;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  padding: 50px 20px;
+  padding-top: 100px;
+  display: flex;
+  display: flex;
+}
+@media screen and (max-width: 768px) {
+  .wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 100px;
+  }
+}
+
+.profile-card {
+  width: 100%;
+  min-height: 460px;
+  margin: auto;
+  box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
+  background: #ffffff23;
+  border-radius: 12px;
+  max-width: 700px;
+  position: relative;
+}
+.profile-card.active .profile-card__cnt {
+  filter: blur(6px);
+}
+.profile-card.active .profile-card-message,
+.profile-card.active .profile-card__overlay {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.1s;
+}
+.profile-card.active .profile-card-form {
+  transform: none;
+  transition-delay: 0.1s;
+}
+.profile-card__img {
+  width: 150px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 4;
+  box-shadow:  0px 0px 0px 7px rgba(107, 74, 255, 0.5);
+}
+@media screen and (max-width: 576px) {
+  .profile-card__img {
+    width: 120px;
+    height: 120px;
+  }
+}
+.profile-card__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-card__cnt {
+  margin-top: -35px;
+  text-align: center;
+  padding: 0 20px;
+  padding-bottom: 40px;
+  transition: all 0.3s;
+}
+.profile-card__name {
+  font-weight: 700;
+  font-size: 24px;
+  color: #6944ff;
+  margin-bottom: 15px;
+}
+.profile-card__txt {
+  font-size: 18px;
+  font-weight: 500;
+  color: #eeeeee;
+  margin-bottom: 15px;
+}
+.profile-card__txt strong {
+  font-weight: 700;
+}
+.profile-card-loc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.profile-card-loc__icon {
+  display: inline-flex;
+  font-size: 27px;
+  margin-right: 10px;
+}
+.profile-card-inf {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 35px;
+}
+.profile-card-inf__item {
+  padding: 10px 35px;
+  min-width: 150px;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-inf__item {
+    padding: 10px 20px;
+    min-width: 120px;
+  }
+}
+.profile-card-inf__title {
+  font-weight: 700;
+  font-size: 27px;
+  color: #eeeeee;
+}
+.profile-card-inf__txt {
+  font-weight: 500;
+  margin-top: 7px;
+}
+.profile-card-social {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.profile-card-social__item {
+  display: inline-flex;
+  width: 55px;
+  height: 55px;
+  margin: 15px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #405de6;
+  box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
+  position: relative;
+  font-size: 21px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-social__item {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .profile-card-social__item:hover {
+    transform: scale(1.2);
+  }
+}
+
+.profile-card-social__item.mail {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
+}
+
+.profile-card-social__item.phone {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
+}
+.profile-card-social .icon-font {
+  display: inline-flex;
+}
+.profile-card-ctr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+@media screen and (max-width: 576px) {
+  .profile-card-ctr {
+    flex-wrap: wrap;
+  }
+}
+.profile-card__button {
+  background: none;
+  border: none;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  margin: 15px 35px;
+  padding: 15px 40px;
+  min-width: 201px;
+  border-radius: 50px;
+  min-height: 55px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card__button {
+    min-width: 170px;
+    margin: 15px 25px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .profile-card__button {
+    min-width: inherit;
+    margin: 0;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+  .profile-card__button:last-child {
+    margin-bottom: 0;
+  }
+}
+.profile-card__button:focus {
+  outline: none !important;
+}
+@media screen and (min-width: 768px) {
+  .profile-card__button:hover {
+    transform: translateY(-5px);
+  }
+}
+.profile-card__button:first-child {
+  margin-left: 0;
+}
+.profile-card__button:last-child {
+  margin-right: 0;
+}
+.profile-card__button.button--blue {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+}
+.profile-card__button.button--blue:hover {
+  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+}
+.profile-card__button.button--orange {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+}
+.profile-card__button.button--orange:hover {
+  box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+}
+.profile-card__button.button--gray {
+  box-shadow: none;
+  background: #dcdcdc;
+  color: #142029;
+}
+.profile-card-message {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 130px;
+  padding-bottom: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.profile-card-form {
+  box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 35px;
+  transform: scale(0.8);
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-form {
+    max-width: 90%;
+    height: auto;
+  }
+}
+@media screen and (max-width: 576px) {
+  .profile-card-form {
+    padding: 20px;
+  }
+}
+.profile-card-form__bottom {
+  justify-content: space-between;
+  display: flex;
+}
+@media screen and (max-width: 576px) {
+  .profile-card-form__bottom {
+    flex-wrap: wrap;
+  }
+}
+
+    </style>
+</body>
+
+</html>

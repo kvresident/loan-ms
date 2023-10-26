@@ -1,6 +1,8 @@
 const express = require('express');
 
 const Customer = require('../models/customer');
+const Loan = require('../models/loan');
+const moment = require('moment')
 
 /**
  * 
@@ -61,6 +63,67 @@ async function agentCustomersPage(req, res){
     }
 }
 
+async function adminCustomersPage(req, res){
+    try {
+        const customers = await Customer.find();
+        let index = 1;
+        res.render('admin-customers', {
+            customers: customers.map(({name, phone, nationalIdNumber, _id})=>{
+            return {
+                name, phone, nationalIdNumber, _id,
+                index: index++
+            }
+        })});
+    } catch (error) {
+        console.log(error)
+        internalServerError(res);
+    }
+}
+
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res 
+ */
+async function agentCustomerPage(req, res){
+    try {
+        let agent = req.session.agentData;
+        const customer = await Customer.findById(req.query.id);
+        const loans = await Loan.count({customer: req.query.id})
+        res.render('agent-customer-viewer', {
+            name: agent.name, 
+            customer,
+            moment,
+            loans
+        });
+    } catch (error) {
+        console.log(error)
+        internalServerError(res);
+    }
+}
+
+
+
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res 
+ */
+async function adminCustomerPage(req, res){
+    try {
+        const customer = await Customer.findById(req.query.id);
+        const loans = await Loan.find({customer: req.query.id})
+        res.render('admin-customer-viewer', {
+            customer,
+            moment,
+            loans
+        });
+    } catch (error) {
+        console.log(error)
+        internalServerError(res);
+    }
+}
+
 module.exports = {
-    createCustomer, agentCustomersPage
+    createCustomer, agentCustomersPage, agentCustomerPage, adminCustomersPage, adminCustomerPage
 }

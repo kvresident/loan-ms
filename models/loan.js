@@ -15,6 +15,9 @@ const loanSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
+    dateOfDisbursement: {
+        type: Date
+    },
     amountRequested: {
         type: Number,
         required: true,
@@ -30,7 +33,8 @@ const loanSchema = new mongoose.Schema({
         default: 0
     },
     isAccepted: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     deadline: {
         type: Date,
@@ -53,7 +57,11 @@ const loanSchema = new mongoose.Schema({
     typeName: {
         type: String,
         required: true
-    }
+    },
+    transactions:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Transaction'
+    }]
 }, { timestamps: true });
 
 const Loan = mongoose.model('Loan', loanSchema);

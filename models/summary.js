@@ -29,14 +29,6 @@ const summarySchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    disbursedAmount: {
-        type: Number,
-        default: 0
-    },
-    loansRejected: {
-        type: Number,
-        default: 0,
-    },
     loansPayed: {
         type: Number,
         default: 0,
