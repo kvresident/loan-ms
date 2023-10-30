@@ -123,10 +123,19 @@
 
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+                <div class="row vh-90 bg-secondary rounded align-items-center justify-content-center mx-0">
                     <div class="col-md-6 text-center">
                         <img src="/img/server-management.svg" class="img-fluid" alt="">
-                        <h3>Loan Management System</h3>
+                        <div>
+                            <button type="button" class="btn btn-primary m-2" onclick="location.href='/admin'">
+                                <i class="fa-solid fa-user-shield"></i>
+                                <span>Admin</span>
+                            </button>
+                            <button type="button" class="btn  btn-outline-success m-2" onclick="location.href='/agent'">
+                                <span>Agent</span>
+                                <i class="fa fa-user"></i>
+                            </button>
+                        </div>
                     </div>
     
                 </div>
@@ -169,6 +178,11 @@
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script src="/js/main.js"></script>
+    <style>
+        .vh-90{
+            height: 85vh !important;
+        }
+    </style>
 </body>
 
 </html>

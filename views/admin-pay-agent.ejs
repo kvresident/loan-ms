@@ -14,8 +14,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
@@ -36,7 +37,8 @@
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -67,12 +69,12 @@
                         <i class="fa fa-tachometer-alt me-2"></i>
                         <span>Dashboard</span>
                     </a>
-                    <a href="/admin/agents" class="nav-item nav-link active">
+                    <a href="/admin/agents" class="nav-item nav-link">
                         <i class="fa-solid fa-users-gear me-2"></i>
                         <span>Agents</span>
                     </a>
-                    
-                    <a href="/admin/loans" class="nav-item nav-link">
+
+                    <a href="/admin/loans" class="nav-item nav-link active">
                         <i class="fa-solid fa-hand-holding-dollar me-2"></i>
                         <span>Loans</span>
                     </a>
@@ -109,13 +111,15 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                
+
                 <div class="navbar-nav align-items-center ms-auto">
-                                      
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="/img/agent.png" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><i class="fa-solid fa-circle-question me-2" title="Help"></i></span>
+                            <img class="rounded-circle me-lg-2" src="/img/agent.png" alt=""
+                                style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><i class="fa-solid fa-circle-question me-2"
+                                    title="Help"></i></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="/" class="dropdown-item">
@@ -139,50 +143,44 @@
 
             <!-- Content Start -->
             <div class="container-fluid pt-4 px-4">
-               
-                <div class="row g-4">
-                    <div class="col-12">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Agents</h6>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Date Joined</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% agents.map(agent=>{ %>
-
-                                            <tr>
-                                                <th scope="row"><%= agent.position %></th>
-                                                <td><%= agent.name %></td>
-                                                <td><%= agent.createdAt%></td>
-                                                <td>@<%= agent.username %></td>
-                                                <td class="<%= agent.statusClass %>"><%= agent.status %></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary rounded-pill m-2"><a href="/admin/agent?id=<%= agent._id %>" class="text-white">View</a></button>
-                                                </td>
-                                            </tr>
-
-                                       <% }) %>
-                                        
-                                    </tbody>
-                                </table>
+                <div class="col-sm-12 col-xl-6 mb-4">
+                    <div class="bg-secondary rounded h-100 p-4">
+                        <form action="/admin/agent/pay" method="post" class="m-2">
+                            <h6 class="mb-4">Confirmation of loan disbursement</h6>
+                            <div class="owl-item">
+                                <div class="testimonial-item text-center">
+                                    <img src="/img/agent.png" %>" style="height:100px" alt="profile card">
+                                    <h5 class="mb-1"><%= agent.name %></h5>
+                                    <p>@<%= agent.username %></p>
+                                    <p class="mb-0">Requested <%= new Intl.NumberFormat('en-KE', {style: 'currency', currency: 'KES'}).format(loan.amountRequested) %></p>
+                                    <p>Of <%= loanType.title %> Loan</p>
+                                    <p><%= moment(loan.createdAt).fromNow() %></p>
+                                    <p><strong>Reason : </strong> <span><%= loan.reason %></span></p>
+                                </div>
                             </div>
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-primary m-2" onclick="location.href='/register'">Add New</button>
+                            <div class="form-floating mb-3">
+                                <input type="text" name="loan" value="<%= loan._id %>" id="floatingSelec1" class="form-control bg-dark" placeholder="Loan Id">
+                                <label for="floatingSelec1">Loan Id</label>
                             </div>
-                        </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="floatingIdNo" placeholder="Amount"
+                                    name="amountDisbursed" min="1000" max="1000000" required >
+                                <label for="floatingIdNo">Amount To Pay</label>
+                            </div>
+                            
+                            
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                                    style="height: 150px;" autocomplete="off" name="confirmation" required></textarea>
+                                <label for="floatingTextarea">Bank or Mpesa Confirmation message</label>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="submit" class="btn btn-primary m-2">DISBURSE</button>
+                            </div>
+                        </form>
                     </div>
-                    
                 </div>
-            </div>
+                
             <!-- Content End -->
 
 
@@ -191,7 +189,7 @@
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved.
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -221,6 +219,9 @@
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script src="/js/main.js"></script>
+    <script>
+        
+    </script>
 </body>
 
 </html>

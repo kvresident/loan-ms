@@ -53,6 +53,11 @@ async function disburseLoanPage(req, res) {
 async function payLoanPage(req, res) {
     try {
         const loan = await Loan.findById(req.query.id);
+
+        if(loan.status == 'payed'){
+
+        }
+
         const loanType = await LoanType.findById(loan.type);
         const customer = await Customer.findById(loan.customer);
 
@@ -78,6 +83,16 @@ async function disburseLoan(req, res) {
     try {
         console.log(req.body);
         const loan = await Loan.findById(req.body.loan);
+
+        if (['disbursed', 'payed'].includes(loan.status)) {
+            return res.status(400).render('error', {
+                status: 400,
+                reason: 'Error in your request',
+                message: `This loan has already been disbursed, you can only add payment to it`,
+                link: '/admin/loans',
+                linkMessage: 'BACK TO LOANS'
+            })
+        }
         const loanType = await LoanType.findById(loan.type);
         const transaction = new Transaction({
             type: 'disbursement',
@@ -91,6 +106,7 @@ async function disburseLoan(req, res) {
 
         loan.amountOffered = req.body.amountDisbursed;
         loan.amountExpectedBack = req.body.amountDisbursed * (1 + (loanType.rate / 100));
+        loan.status = 'disbursed';
         loan.isAccepted = true;
         loan.deadline = new Date(req.body.deadline);
         loan.transactions.push(transaction._id);
@@ -115,6 +131,16 @@ async function payLoan(req, res) {
 
         const loan = await Loan.findById(loanId);
 
+        if ( 'payed' == loan.status) {
+            return res.status(400).render('error', {
+                status: 400,
+                reason: 'Error in your request',
+                message: `This loan has already been disbursed, you can only add payment to it`,
+                link: '/admin/loans',
+                linkMessage: 'BACK TO LOANS'
+            })
+        }
+
         const transaction = new Transaction({
             type: 'loan-repayment',
             amount,
@@ -127,8 +153,10 @@ async function payLoan(req, res) {
 
 
         loan.transactions.push(transaction._id);
-        loan.amountPayed += amount;
-
+        loan.amountPayed += +amount;
+        if (loan.amountPayed >= loan.amountExpectedBack) {
+            loan.status = 'payed';
+        }
         await loan.save();
 
         res.redirect('/agent/loans')

@@ -1,4 +1,6 @@
 const Agent = require('../models/agent');
+const Loan = require('../models/loan');
+
 const moment = require('moment')
 const express = require("express");
 const bcrypt = require('bcrypt')
@@ -109,9 +111,9 @@ async function agentsHome(req, res) {
                 position: position++, name, username, status, _id, statusClass, createdAt: moment(createdAt).format('MMM Do')
             }
         });
-
+        
         res.render('admin-agents', {
-            agents
+            agents, 
         })
     } catch (error) {
         console.log(error)
@@ -131,8 +133,11 @@ async function agentsHome(req, res) {
  * @param {Agent} agent 
  * @param {express.Response} response 
  */
-function agentPage(agent, response) {
+async function agentPage(agent, response) {
     if (agent) {
+        const loans = await Loan.find({ uploadedBy: agent._id });
+        const loanCount = loans.length;
+        const totalAmount = loans.reduce((acc, loan) => acc + loan.amountExpectedBack, 0);
         response.render('admin-agent-viewer', {
             name: agent.name,
             _id: agent._id,
@@ -141,6 +146,8 @@ function agentPage(agent, response) {
             email: agent.email,
             phone: agent.email,
             status: agent.status,
+            loanCount,
+            totalAmount
         })
     } else {
         return response.render('error', {
@@ -361,7 +368,7 @@ async function setStatus(req, res) {
 }
 
 async function setPwd(req, res) {
-    const {username, password, email} = req.body;
+    const { username, password, email } = req.body;
 
     console.log(req.body)
 
@@ -376,7 +383,7 @@ async function setPwd(req, res) {
     }
 
     try {
-        const agent = await Agent.findOne({username, email});
+        const agent = await Agent.findOne({ username, email });
 
         if (!agent) {
             return res.render('error', {
@@ -388,7 +395,7 @@ async function setPwd(req, res) {
             })
         }
 
-        if(agent.status === 'active'){
+        if (agent.status === 'active') {
             return res.render('error', {
                 status: 404,
                 reason: 'Invalid Action',
@@ -423,7 +430,7 @@ async function setPwd(req, res) {
  * @param {express.Response} res 
  * @returns 
  */
-async function agentDashboard(req, res){
+async function agentDashboard(req, res) {
     try {
         const agent = await Agent.findById(req.session.agentData._id);
 

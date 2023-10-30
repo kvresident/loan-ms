@@ -3,12 +3,11 @@ const { home, agentDetails, viewAgentByUsername, setStatus } = require('../contr
 const { adminLoanContent, adminDeleteLoan } = require('../controllers/loan');
 const { adminCustomersPage, adminCustomerPage } = require('../controllers/customer');
 const { disburseLoanPage, disburseLoan } = require('../controllers/transaction');
+const { renderDashboard } = require('../controllers/admin');
 
 const router = express.Router();
 
-router.get('/', (req, res)=>{
-    res.render('dashboard')
-})
+router.get('/', renderDashboard);
 
 router.get('/agents', home)
 

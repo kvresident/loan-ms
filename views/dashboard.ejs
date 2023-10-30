@@ -73,7 +73,7 @@
                         <i class="fa-solid fa-users-gear me-2"></i>
                         <span>Agents</span>
                     </a>
-                    
+
                     <a href="/admin/loans" class="nav-item nav-link">
                         <i class="fa-solid fa-hand-holding-dollar me-2"></i>
                         <span>Loans</span>
@@ -151,8 +151,10 @@
                             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                                 <div class="ms-3">
-                                    <p class="mb-2">Requested</p>
-                                    <h6 class="mb-0">$1234</h6>
+                                    <p class="mb-2">Income</p>
+                                    <h6 class="mb-0">
+                                        <%= overall.totalMoneyIn %>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -160,8 +162,10 @@
                             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                                 <div class="ms-3">
-                                    <p class="mb-2">Disbursed</p>
-                                    <h6 class="mb-0">$1234</h6>
+                                    <p class="mb-2">Expenditure</p>
+                                    <h6 class="mb-0">
+                                        <%= overall.totalMoneyOut %>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -169,8 +173,10 @@
                             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                                 <div class="ms-3">
-                                    <p class="mb-2">Transactions</p>
-                                    <h6 class="mb-0">$1234</h6>
+                                    <p class="mb-2">Deductions</p>
+                                    <h6 class="mb-0">
+                                        <%= overall.transactionAmountDeducted %>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -179,13 +185,15 @@
                                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Profit</p>
-                                    <h6 class="mb-0">$1234</h6>
+                                    <h6 class="mb-0">
+                                        <%= overall.profit %>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
 
                 <div class="text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
@@ -197,8 +205,10 @@
                             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                                 <div class="ms-3">
-                                    <p class="mb-2">Requested</p>
-                                    <h6 class="mb-0">$1234</h6>
+                                    <p class="mb-2">Income</p>
+                                    <h6 class="mb-0">
+                                        <%= newData.totalMoneyIn %>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -206,8 +216,10 @@
                             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                                 <div class="ms-3">
-                                    <p class="mb-2">Disbursed</p>
-                                    <h6 class="mb-0">$1234</h6>
+                                    <p class="mb-2">Expenditure</p>
+                                    <h6 class="mb-0">
+                                        <%= newData.totalMoneyOut %>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -215,8 +227,10 @@
                             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                                 <div class="ms-3">
-                                    <p class="mb-2">Transactions</p>
-                                    <h6 class="mb-0">$1234</h6>
+                                    <p class="mb-2">Deductions</p>
+                                    <h6 class="mb-0">
+                                        <%= newData.transactionAmountDeducted %>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -225,7 +239,9 @@
                                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Profit</p>
-                                    <h6 class="mb-0">$1234</h6>
+                                    <h6 class="mb-0">
+                                        <%= newData.profit %>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -247,15 +263,7 @@
                             <canvas id="worldwide-sales"></canvas>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Loans & Revenue</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="salse-revenue"></canvas>
-                        </div>
-                    </div>
+                    
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-secondary text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -265,26 +273,21 @@
                             <canvas id="line-chart"></canvas>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Loan Types</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="bar-chart"></canvas>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <!-- Sales Chart End -->
-
-
+            <code id="raw-data">
+                <%= JSON.stringify(monthsData) %>
+            </code>
+            
+            
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Recent Loans</h6>
-                        <a href="">Show All</a>
+                        <a href="/admin/loans">Show All</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -298,51 +301,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    
-                                    <td>May 10</td>
-                                    <td>Emergency</td>
-                                    <td>Marry Jane</td>
-                                    <td>Kes 1,050</td>
-                                    <td class="text-success">Paid</td>
-                                    
-                                </tr>
-                                <tr>
-                                    
-                                    <td>Jun 16</td>
-                                    <td>Business</td>
-                                    <td>Magdalene Mercy</td>
-                                    <td>Kes 16,000</td>
-                                    <td class="text-warn">Paying</td>
-                                    
-                                </tr>
-                                <tr>
-                                    
-                                    <td>Jul 01</td>
-                                    <td>Personal</td>
-                                    <td>Milicent</td>
-                                    <td>Kes 35,000</td>
-                                    <td class="text-danger">Denied</td>
-                                    
-                                </tr>
-                                <tr>
-                                    
-                                    <td>Mar 23</td>
-                                    <td>Emergency</td>
-                                    <td>Faith</td>
-                                    <td>Kes 18,000</td>
-                                    <td class="text-white bg-danger rounded">Defaulted</td>
-                                    
-                                </tr>
-                                <tr>
-                                    
-                                    <td>Oct 18</td>
-                                    <td>Home</td>
-                                    <td>Elizabeth</td>
-                                    <td>Kes 50,000</td>
-                                    <td class="text-white bg-primary rounded">Pending</td>
-                                    
-                                </tr>
+                                <% loans.map(({createdAt, typeName, customerName, amountRequested, status})=>{ %>
+                                    <tr>
+
+                                        <td><%= moment(createdAt).format("MMM Do") %></td>
+                                        <td><%= typeName %></td>
+                                        <td><%= customerName %></td>
+                                        <td><%= amountRequested %></td>
+                                        <td class="<%= status == "payed"? "text-success": status == 'disbursed' ? "text-info" : "text-danger" %>">
+                                            <%= status %>
+                                        </td>
+    
+                                    </tr>
+                                <% }) %>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -358,104 +330,50 @@
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h6 class="mb-0">Agents</h6>
-                                <a href="">Show All</a>
+                                <a href="/admin/agents">Show All</a>
                             </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="/img/user.png" alt=""
-                                    style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Leila Sherman</h6>
-                                        <small>15 minutes ago</small>
+                            <% agents.map(({name, username, createdAt, status})=>{ %>
+                                <div class="d-flex align-items-center border-bottom py-3">
+                                    <img class="rounded-circle flex-shrink-0" src="/img/agent.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-0"><%= name %></h6>
+                                            <small><%= moment(createdAt).fromNow() %></small>
+                                        </div>
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <span class="mb-0">@<%= username %></span>
+                                            <span class="<%= status == "active"? "text-success": status == 'suspended' ? "text-warning" : status == 'terminated'? "text-danger" : 'text-info' %>">
+                                                <%= status %>
+                                            </span>
+                                        </div>
+                                        
                                     </div>
-                                    <span>Normal agent</span>
                                 </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="/img/user.png" alt=""
-                                    style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Taliyah Obrien</h6>
-                                        <small>3 months ago</small>
-                                    </div>
-                                    <span>Normal agent</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="/img/user.png" alt=""
-                                    style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Kaylyn Rojas</h6>
-                                        <small>1 week ago</small>
-                                    </div>
-                                    <span>Normal agent</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="/img/user.png" alt=""
-                                    style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Liberty Rivas</h6>
-                                        <small>3 weeks ago</small>
-                                    </div>
-                                    <span>Normal agent</span>
-                                </div>
-                            </div>
+                            <% }) %>
+                            
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h6 class="mb-0">Customers</h6>
-                                <a href="">Show All</a>
+                                <a href="/admin/customers">Show All</a>
                             </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="/img/customer.png" alt=""
-                                    style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Leila Sherman</h6>
-                                        <small>15 minutes ago</small>
+                            <% customers.map(({name, constituency, village, gender, createdAt})=>{ %>
+                                <div class="d-flex align-items-center border-bottom py-3">
+                                    <img class="rounded-circle flex-shrink-0" src="/img/<%= gender == 'female'? 'customer' : 'customer-male' %>.png" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="w-100 ms-3">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-0"><%= name %></h6>
+                                            <small><%= moment(createdAt).fromNow() %></small>
+                                        </div>
+                                        <span><%= village %>, <%= constituency%></span>
                                     </div>
-                                    <span>Nattheim</span>
                                 </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="/img/customer.png" alt=""
-                                    style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Taliyah Obrien</h6>
-                                        <small>3 months ago</small>
-                                    </div>
-                                    <span>Kertosono</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="/img/customer.png" alt=""
-                                    style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Kaylyn Rojas</h6>
-                                        <small>1 week ago</small>
-                                    </div>
-                                    <span>Diancun</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="/img/customer.png" alt=""
-                                    style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Liberty Rivas</h6>
-                                        <small>3 weeks ago</small>
-                                    </div>
-                                    <span>Citaritih</span>
-                                </div>
-                            </div>
+                            <% }) %>
+                            
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-4">
@@ -467,10 +385,10 @@
                             <div id="calender"></div>
                         </div>
                     </div>
-                    
+
                 </div>
 
-                
+
             </div>
             <!-- Widgets End -->
 
@@ -576,26 +494,28 @@
             Chart.defaults.color = "#6C7293";
             Chart.defaults.borderColor = "#000000";
 
+            const rawData = JSON.parse($('#raw-data')[0].innerText);
+            const months = rawData.map(({ month }) => month)
 
             // Worldwide Sales Chart
             var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
             var myChart1 = new Chart(ctx1, {
                 type: "bar",
                 data: {
-                    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+                    labels: months,
                     datasets: [{
                         label: "Requested",
-                        data: [15, 30, 55, 65, 60, 80, 95],
+                        data: rawData.map(({ data }) => data.loansRequested),
                         backgroundColor: "rgba(0, 106, 255, 0.7)"
                     },
                     {
                         label: "Disbursed",
-                        data: [8, 35, 40, 60, 70, 55, 75],
+                        data: rawData.map(({ data }) => data.loansDisbursed),
                         backgroundColor: "rgba(255, 166, 0, 0.7)"
                     },
                     {
                         label: "Payed Back",
-                        data: [12, 25, 45, 55, 65, 70, 60],
+                        data: rawData.map(({ data }) => data.loansPayed),
                         backgroundColor: "rgba(1, 155, 24, 0.7)"
                     }
                     ]
@@ -606,30 +526,7 @@
             });
 
 
-            // Salse & Revenue Chart
-            var ctx2 = $("#salse-revenue").get(0).getContext("2d");
-            var myChart2 = new Chart(ctx2, {
-                type: "line",
-                data: {
-                    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
-                    datasets: [{
-                        label: "Disbursed",
-                        data: [15, 30, 55, 45, 70, 65, 85],
-                        backgroundColor: "rgba(255, 166, 0, 0.5)",
-                        fill: true
-                    },
-                    {
-                        label: "Returned",
-                        data: [99, 135, 170, 130, 190, 180, 270],
-                        backgroundColor: "rgba(0, 106, 255, 0.3)",
-                        fill: true
-                    }
-                    ]
-                },
-                options: {
-                    responsive: true
-                }
-            });
+            
 
 
 
@@ -638,23 +535,23 @@
             var myChart3 = new Chart(ctx3, {
                 type: "line",
                 data: {
-                    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+                    labels: months,
                     datasets: [{
                         label: "Profit",
                         fill: false,
                         backgroundColor: "rgba(67, 178, 55, 0.7)",
-                        data: [1000, 1300, 1700, 2000, 2500, 3400, 4500]
+                        data: rawData.map(({ data }) => data.profit)
                     }, {
                         label: "Income",
                         fill: false,
                         backgroundColor: "rgba(1, 78, 155, 0.7)",
-                        data: [10000, 12300, 15600, 17500, 25500, 33600, 34500]
+                        data: rawData.map(({ data }) => data.totalMoneyIn)
                     },
                     {
                         label: "Expenses",
                         fill: false,
                         backgroundColor: "rgba(255, 99, 132, 0.7)",
-                        data: [9000, 11000, 14500, 16000, 24000, 30400, 30000]
+                        data: rawData.map(({ data }) => data.totalMoneyOut)
                     },
                     ]
                 },
@@ -664,60 +561,18 @@
             });
 
 
-            // Single Bar Chart
-            var ctx4 = $("#bar-chart").get(0).getContext("2d");
-
-            var myChart4 = new Chart(ctx4, {
-                type: "bar",
-                data: {
-                    labels: [
-                        "Business",
-                        "Personal",
-                        "Student",
-                        "Agriculture",
-                        "Home Improvement",
-                        "Construction",
-                        "Wedding",
-                        "Medical",
-                        "Emergency"
-                    ],
-                    datasets: [{
-                        backgroundColor: [
-                            "rgba(75, 192, 192, 0.7)", // Business
-                            "rgba(255, 99, 132, 0.7)",  // Personal
-                            "rgba(255, 159, 64, 0.7)",  // Student
-                            "rgba(54, 162, 235, 0.7)",  // Agriculture
-                            "rgba(153, 102, 255, 0.7)", // Home Improvement
-                            "rgba(75, 192, 192, 0.7)",  // Construction
-                            "rgba(255, 159, 64, 0.7)",  // Wedding
-                            "rgba(54, 162, 235, 0.7)",  // Medical
-                            "rgba(153, 102, 255, 0.7)"  // Emergency
-                        ],
-                        data: [
-                            5000,   // Business
-                            8000,   // Personal
-                            3000,   // Student
-                            4500,   // Agriculture
-                            6000,   // Home Improvement
-                            4000,   // Construction
-                            3500,   // Wedding
-                            2000,   // Medical
-                            1000    // Emergency
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    title: "Loan types"
-                }
-            });
-
+            
 
 
         })(jQuery);
 
 
     </script>
+    <style>
+        #raw-data{
+            display: none;
+        }
+    </style>
 </body>
 
 </html>

@@ -43,8 +43,8 @@ async function createLoanType(req, res){
  */
 async function adminLoanContent(req, res){
     try {
-        const loans = await Loan.find();
-        const loanTypes = await LoanType.find();
+        const loans = await Loan.find().sort({ createdAt: -1 });
+        const loanTypes = await LoanType.find().sort({createdAt: -1});
 
         res.render('admin-loan', {
             loans, loanTypes, moment

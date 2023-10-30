@@ -25,7 +25,7 @@ const summarySchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    loansDistributed: {
+    loansDisbursed: {
         type: Number,
         default: 0,
     },
@@ -41,8 +41,24 @@ const summarySchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    customers: {
+        type: Number,
+        default: 0
+    }
 });
+
+summarySchema.pre('save', function (next) {
+
+    this.profit = this.totalMoneyIn + this.transactionAmountDeducted - this.totalMoneyOut;
+    this.totalMoneyFlow = this.totalMoneyIn + this.transactionAmountDeducted + this.totalMoneyOut;
+
+    next();
+});
+
+
+
 
 const Summary = mongoose.model('Summary', summarySchema);
 
 module.exports = Summary;
+
