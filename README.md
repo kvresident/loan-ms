@@ -1,6 +1,6 @@
 # loan-ms
 Loan management system
-![Admin Page](C:\Users\hp\Pictures\Screenshots\Screenshot 2023-12-24 100725.png)
+![Admin Page](./Screenshot%202023-12-24%20100443.png)
 
 ### In your dot env
 ```env
